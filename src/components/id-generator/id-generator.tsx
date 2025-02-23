@@ -9,15 +9,15 @@ import { Separator } from "@/components/ui/separator";
 import { useList } from "react-use";
 import * as IDGen from "kia-id-generator";
 import { IdsList } from "./id-list";
+import { IDGeneratorFormatRules } from "./format-rules";
 
 export function IDGenerator() {
   const [rules, rulesActions] = useList<IDGen.Rule>([
-    { type: IDGen.RuleType.STATIC, value: "ID-" },
-    { type: IDGen.RuleType.INCREMENT, fixedLength: 2 },
+    { type: IDGen.RuleType.STATIC, value: "ID" },
+    { type: IDGen.RuleType.STATIC, value: "-" },
+    { type: IDGen.RuleType.INCREMENT, fixedLength: 2, format: IDGen.RuleFormat.BASE_10 },
   ]);
   const { generator } = useIdGenerator(rules);
-
-  const [format, setFormat] = useState("ABC-####");
 
   const retention = 15;
   const [ids, idsActions] = useList<string>([]);
@@ -38,25 +38,7 @@ export function IDGenerator() {
         <CardContent className="space-y-4">
           <div className="grid gap-6 md:grid-cols-2">
             {/* Left Column - Customization Rules */}
-            <div className="space-y-4">
-              <div>
-                <h3 className="text-lg font-semibold mb-4">Customize Format</h3>
-                <div className="space-y-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="format">Number Pattern</Label>
-                    <Input
-                      id="format"
-                      value={format}
-                      onChange={(e) => setFormat(e.target.value)}
-                      placeholder="Enter format (e.g., ABC-####)"
-                    />
-                    <p className="text-sm text-muted-foreground">
-                      Use # for numbers (e.g., ABC-#### will generate ABC-0001)
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <IDGeneratorFormatRules rules={rules} rulesActions={rulesActions} />
 
             {/* Separator for mobile view */}
             <Separator className="md:hidden my-4" />
