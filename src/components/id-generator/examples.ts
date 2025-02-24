@@ -1,5 +1,5 @@
 import { Rule } from "./types";
-import * as IDGen from "kia-id-generator";
+import * as IDGen from "docnumbering";
 
 export const QuarterlyDocument: IDGen.Rule[] = [
   { type: IDGen.RuleType.STATIC, value: "DOC" },

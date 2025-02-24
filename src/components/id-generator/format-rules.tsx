@@ -1,6 +1,6 @@
 "use client";
 
-import * as IDGen from "kia-id-generator";
+import * as IDGen from "docnumbering";
 import { Button } from "../ui/button";
 import { ListActions } from "react-use/lib/useList";
 import { IDGeneratorFormatRuleItem, SortableIDGeneratorFormatRuleItem } from "./format-rule-item";

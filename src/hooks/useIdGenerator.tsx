@@ -1,5 +1,5 @@
 import { Rule } from "@/components/id-generator/types";
-import * as IDGen from "kia-id-generator";
+import * as IDGen from "docnumbering";
 import { useMemo } from "react";
 
 export function useIdGenerator(rules: Rule[], today?: Date) {

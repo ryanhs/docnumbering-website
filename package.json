@@ -1,5 +1,5 @@
 {
-  "name": "kia-id-generator-website",
+  "name": "docnumbering-website",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -23,7 +23,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
-    "kia-id-generator": "^0.0.2",
+    "docnumbering": "^0.0.1",
     "lucide-react": "^0.475.0",
     "luxon": "^3.5.0",
     "next": "15.1.7",

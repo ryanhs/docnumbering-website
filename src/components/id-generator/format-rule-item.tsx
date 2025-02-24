@@ -2,7 +2,7 @@
 
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import * as IDGen from "kia-id-generator";
+import * as IDGen from "docnumbering";
 import { Button } from "../ui/button";
 import { AlignJustify, Trash2 } from "lucide-react";
 import { ListActions } from "react-use/lib/useList";
