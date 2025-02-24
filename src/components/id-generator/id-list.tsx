@@ -48,7 +48,7 @@ export function IdsList(props: IdsListProps) {
         </Button>
 
         <Card>
-          <ScrollArea className="h-[400px] w-full rounded-md border p-4">
+          <ScrollArea className="max-h-[350px] w-full rounded-md border p-4">
             {ids.length === 0 ? (
               <p className="text-center text-muted-foreground">{`Generated numbers will appear here`}</p>
             ) : (

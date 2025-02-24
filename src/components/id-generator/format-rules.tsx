@@ -105,7 +105,7 @@ export function IDGeneratorFormatRules(props: IDGeneratorFormatRulesProps) {
 
             <div className="mt-10"></div>
 
-            <Button onClick={addRule} className="w-full " variant="outline">
+            <Button onClick={addRule} className="w-full " variant="gray">
               {`Add Rule`}
             </Button>
           </div>

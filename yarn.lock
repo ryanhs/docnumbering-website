@@ -1024,10 +1024,10 @@ js-cookie@^2.2.1:
   resolved "https://registry.yarnpkg.com/js-cookie/-/js-cookie-2.2.1.tgz#69e106dc5d5806894562902aa5baec3744e9b2b8"
   integrity sha512-HvdH2LzI/EAZcUwA8+0nKNtWHqS+ZmijLA30RwZA0bo7ToCckjK5MkGhjED9KoRcXO6BaGI3I9UIzSA1FKFPOQ==
 
-kia-id-generator@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/kia-id-generator/-/kia-id-generator-0.0.1.tgz#81e35b9a619f8313e7155aa762861184a10463af"
-  integrity sha512-Oz1fzv2+GeJoPbbKufCUMsfebvH6RS3C574XhF0mjHFj4w+zf+9+kMhvhhzYQgJXb4bUPAosGu3WX1pTQsu4uA==
+kia-id-generator@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/kia-id-generator/-/kia-id-generator-0.0.2.tgz#1d1a11eb2f85e114aae4fcd2be69bbff2a8af9bb"
+  integrity sha512-oVnhdyXcye0uFrkDgXuf4vJOEUpWJkbAZPwU2ZWdkJCtL3DVjM9eS5FoDHxSG/rPaNO3x99SQeQGHC9Ybu+2xA==
 
 lilconfig@^3.0.0, lilconfig@^3.1.3:
   version "3.1.3"
