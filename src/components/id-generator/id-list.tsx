@@ -20,14 +20,20 @@ export function IdsList(props: IdsListProps) {
 
   function copyToClipboard(val: string) {
     _copyToClipboard(val);
-    toast(`Copied Id!`, {
+    toast.success(`Copied Id!`, {
       description: `> ${val}`,
     });
   }
 
   const generateNumber = async () => {
-    await generate();
-    counterActions.inc();
+    try {
+      await generate();
+      counterActions.inc();
+    } catch (err: any) {
+      toast.error(`Failed to generate new id!`, {
+        description: String(err?.message),
+      });
+    }
   };
 
   return (

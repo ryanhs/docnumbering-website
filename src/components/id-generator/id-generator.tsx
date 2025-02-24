@@ -10,14 +10,17 @@ import { useList } from "react-use";
 import * as IDGen from "kia-id-generator";
 import { IdsList } from "./id-list";
 import { IDGeneratorFormatRules } from "./format-rules";
+import { Rule } from "./types";
+import { CustomDate } from "./custom-date";
 
 export function IDGenerator() {
-  const [rules, rulesActions] = useList<IDGen.Rule>([
-    { type: IDGen.RuleType.STATIC, value: "ID" },
-    { type: IDGen.RuleType.STATIC, value: "-" },
-    { type: IDGen.RuleType.INCREMENT, fixedLength: 2, format: IDGen.RuleFormat.BASE_10 },
+  const [rules, rulesActions] = useList<Rule>([
+    { id: 1, type: IDGen.RuleType.STATIC, value: "ID" },
+    { id: 2, type: IDGen.RuleType.STATIC, value: "-" },
+    { id: 3, type: IDGen.RuleType.INCREMENT, fixedLength: 2, format: IDGen.RuleFormat.BASE_10 },
   ]);
-  const { generator } = useIdGenerator(rules);
+  const [today, setToday] = useState<Date>(new Date());
+  const { generator } = useIdGenerator(rules, today);
 
   const retention = 15;
   const [ids, idsActions] = useList<string>([]);
@@ -48,6 +51,8 @@ export function IDGenerator() {
           </div>
         </CardContent>
       </Card>
+
+      <CustomDate today={today} setToday={setToday} />
     </div>
   );
 }
