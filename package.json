@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "deploy": "AWS_PROFILE=meunangdevops aws s3 sync ./out s3://numbering.easytag.id",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

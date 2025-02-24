@@ -9,6 +9,8 @@ import { ListActions } from "react-use/lib/useList";
 import { Rule } from "./types";
 import { CSS } from "@dnd-kit/utilities";
 import { useSortable } from "@dnd-kit/sortable";
+import { CSSProperties } from "react";
+import { useMedia } from "react-use";
 
 const typeOptions: IDGen.RuleType[] = [
   IDGen.RuleType.STATIC,
@@ -152,7 +154,7 @@ export function IDGeneratorFormatRuleItem(props: IDGeneratorFormatRuleItemProps)
             rulesActions.updateAt(index, { ...rule, fixedLength: e.target.value ? +String(e.target.value) : undefined })
           }
           placeholder={`Length`}
-          className="max-w-[60px]"
+          className="max-w-[60px] hidden md:block"
         />
       )}
 
@@ -171,11 +173,17 @@ export function IDGeneratorFormatRuleItem(props: IDGeneratorFormatRuleItemProps)
 
 // wrapper for dnd
 export function SortableIDGeneratorFormatRuleItem(props: IDGeneratorFormatRuleItemProps) {
-  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id: props.currentRule.id });
+  const isWide = useMedia("(min-width: 900px)");
 
-  const style = {
+  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({
+    id: props.currentRule.id,
+    disabled: !isWide,
+  });
+
+  const style: CSSProperties = {
     transform: CSS.Transform.toString(transform),
     transition,
+    touchAction: "none",
   };
 
   return (

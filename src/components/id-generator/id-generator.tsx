@@ -2,23 +2,19 @@
 
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { useIdGenerator } from "@/hooks/useIdGenerator";
 import { Separator } from "@/components/ui/separator";
-import { useList } from "react-use";
-import * as IDGen from "kia-id-generator";
+import { useList, useMedia } from "react-use";
 import { IdsList } from "./id-list";
 import { IDGeneratorFormatRules } from "./format-rules";
 import { Rule } from "./types";
 import { CustomDate } from "./custom-date";
+import { defaultRules } from "./default";
 
 export function IDGenerator() {
-  const [rules, rulesActions] = useList<Rule>([
-    { id: 1, type: IDGen.RuleType.STATIC, value: "ID" },
-    { id: 2, type: IDGen.RuleType.STATIC, value: "-" },
-    { id: 3, type: IDGen.RuleType.INCREMENT, fixedLength: 2, format: IDGen.RuleFormat.BASE_10 },
-  ]);
+  const isWide = useMedia("(min-width: 900px)");
+
+  const [rules, rulesActions] = useList<Rule>(defaultRules);
   const [today, setToday] = useState<Date>(new Date());
   const { generator } = useIdGenerator(rules, today);
 
@@ -53,6 +49,9 @@ export function IDGenerator() {
       </Card>
 
       <CustomDate today={today} setToday={setToday} />
+      {!isWide && (
+        <p className="italic">{`* For the best experience, use a desktop to access the full editor with sortable rules.`}</p>
+      )}
     </div>
   );
 }

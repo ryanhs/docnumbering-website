@@ -44,8 +44,13 @@ export function IDGeneratorFormatRules(props: IDGeneratorFormatRulesProps) {
     },
   });
   const mouseSensor = useSensor(MouseSensor);
-  const touchSensor = useSensor(TouchSensor);
-  const sensors = useSensors(pointerSensor, mouseSensor, touchSensor);
+  // const touchSensor = useSensor(TouchSensor, {
+  //   activationConstraint: {
+  //     distance: 800,
+  //     delay: 1000,
+  //   },
+  // });
+  const sensors = useSensors(pointerSensor, mouseSensor);
 
   function handleDragStart(event: DragStartEvent) {
     const { active } = event;
@@ -71,7 +76,7 @@ export function IDGeneratorFormatRules(props: IDGeneratorFormatRulesProps) {
       <div className="space-y-4">
         <div>
           <div className=" mb-4">
-            <span className="text-lg font-semibold">{`Customize Format`}</span>
+            <span className="text-md lg:text-lg font-semibold">{`Customize Format`}</span>
           </div>
 
           <div className="space-y-4 min-w-[400px]">
