@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ID Generator",
-  description: "Document Number / ID Generator",
+  title: "Docnumbering",
+  description: "Document Numbering / ID Generator",
 };
 
 export default function RootLayout({
