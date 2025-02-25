@@ -605,6 +605,11 @@
   dependencies:
     csstype "^3.0.2"
 
+"@types/throttle-debounce@^5.0.2":
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/@types/throttle-debounce/-/throttle-debounce-5.0.2.tgz#3489d91673a4be830c2c9e2acf1f6cdab724102c"
+  integrity sha512-pDzSNulqooSKvSNcksnV72nk8p7gRqN8As71Sp28nov1IgmPKWbOEIwAWvBME5pPTtaXJAvG3O4oc76HlQ4kqQ==
+
 "@xobotyi/scrollbar-width@^1.9.5":
   version "1.9.5"
   resolved "https://registry.yarnpkg.com/@xobotyi/scrollbar-width/-/scrollbar-width-1.9.5.tgz#80224a6919272f405b87913ca13b92929bdf3c4d"

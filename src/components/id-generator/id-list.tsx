@@ -6,6 +6,8 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { useCopyToClipboard, useCounter } from "react-use";
 import { toast } from "sonner";
 import { ClipboardCopyIcon } from "lucide-react";
+import { useEffect, useState } from "react";
+import { debounce } from "throttle-debounce";
 
 type IdsListProps = {
   ids: string[];
@@ -15,6 +17,9 @@ type IdsListProps = {
 export function IdsList(props: IdsListProps) {
   const { ids, generate } = props;
 
+  const maxTimer = 3;
+  const [timer, setTimer] = useState<number>(maxTimer);
+  const [enableTimer, setEnableTimer] = useState<boolean>(true);
   const [counter, counterActions] = useCounter(0);
   const [, _copyToClipboard] = useCopyToClipboard();
 
@@ -25,7 +30,7 @@ export function IdsList(props: IdsListProps) {
     });
   }
 
-  const generateNumber = async () => {
+  const generateNumber = debounce(200, async () => {
     try {
       await generate();
       counterActions.inc();
@@ -34,7 +39,31 @@ export function IdsList(props: IdsListProps) {
         description: String(err?.message),
       });
     }
+  });
+
+  const generateNumberManual = () => {
+    setEnableTimer(false);
+    return generateNumber();
   };
+
+  useEffect(() => {
+    if (enableTimer) {
+      const i = setInterval(() => {
+        setTimer((pt) => {
+          const nt = pt - 1;
+
+          if (nt < 1) {
+            generateNumber();
+            return maxTimer;
+          }
+
+          return nt;
+        });
+      }, 1000);
+
+      return () => clearInterval(i);
+    }
+  }, [enableTimer, timer]);
 
   return (
     <div className="space-y-4">
@@ -43,16 +72,17 @@ export function IdsList(props: IdsListProps) {
           {`Generated IDs`} {!!counter && `(${counter})`}
         </h3>
 
-        <Button onClick={generateNumber} className="w-full mb-4">
+        <Button onClick={() => generateNumberManual()} className="w-full mb-4">
           {`Generate New ID`}
+          <span className="text-xs">{enableTimer && ` (${timer}s)`}</span>
         </Button>
 
         <Card>
-          <ScrollArea className="max-h-[350px] w-full rounded-md border p-4">
+          <ScrollArea className="w-full rounded-md border p-4 h-[350px]">
             {ids.length === 0 ? (
               <p className="text-center text-muted-foreground">{`Generated numbers will appear here`}</p>
             ) : (
-              <div className="space-y-2">
+              <div className="space-y-2 pr-2">
                 {ids.map((id, index) => (
                   <div key={index} className="rounded bg-muted px-3 py-2 font-mono h-[53px]">
                     <Button variant={"outline"} className="float-right" onClick={() => copyToClipboard(id)}>
