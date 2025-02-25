@@ -16,6 +16,14 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Docnumbering",
   description: "Document Numbering / ID Generator",
+
+  applicationName: "docnumbering",
+  generator: "docnumbering",
+  keywords: "document,numbering,id,generator",
+  category: "generator",
+
+  creator: "ryanh <mr.ryansilalahi@gmail.com>",
+  publisher: "ryanh",
 };
 
 export default function RootLayout({
