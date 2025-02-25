@@ -30,7 +30,7 @@ export function IdsList(props: IdsListProps) {
     });
   }
 
-  const generateNumber = debounce(200, async () => {
+  const generateNumber = debounce(50, async () => {
     try {
       await generate();
       counterActions.inc();
