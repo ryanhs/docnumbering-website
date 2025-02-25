@@ -1,4 +1,4 @@
-import { IDGenerator } from "@/components/id-generator/id-generator";
+import { IDGenerator } from "@/components/id-generator";
 import { cn } from "@/lib/utils";
 
 export default function Home() {

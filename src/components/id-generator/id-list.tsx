@@ -43,7 +43,7 @@ export function IdsList(props: IdsListProps) {
           {`Generated IDs`} {!!counter && `(${counter})`}
         </h3>
 
-        <Button onClick={generateNumber} className="w-full mb-4" variant={"green"}>
+        <Button onClick={generateNumber} className="w-full mb-4">
           {`Generate New ID`}
         </Button>
 
